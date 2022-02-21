@@ -1,0 +1,53 @@
+﻿@model Libro
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    List<int> listaSession =
+        Context.Session.GetObject<List<int>>("IDSLIBROS");
+}
+
+
+<h1>Detalle Libro</h1>
+
+
+<div class="card" style="width: 18rem;">
+    <input type="hidden" name="libro" value="@Model.Titulo" />
+    <img class="card-img-top" src="~/images/@Model.Portada" style="width:35%">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Titulo</h5>
+        <p class="card-text">@Model.Autor</p>
+        <p class="card-text">Editorial: @Model.Editorial</p>
+        <p class="card-text">Precio: @Model.Precio €</p>
+        <p class="card-text">Sinopsis: @Model.Resumen</p>
+    </div>
+</div>
+@*<a asp-controller="Libros"
+   asp-action="LibrosAlmacenados"
+   asp-route-idlibro="@Model.IdLibro"
+   class="btn btn-info">
+    Comprar
+</a>*@
+
+<li class="list-group-item list-group-item-dark">
+
+    @if (listaSession != null)
+    {
+    <a asp-controller="Libros"
+       asp-action="Details"
+       asp-route-idlibro="@Model.IdLibro"
+       class="btn btn-info">
+        Comprar
+    </a>
+    }
+    else 
+    { 
+    <a asp-controller="Libros"
+       asp-action="Details"
+       asp-route-idlibro="@Model.IdLibro"
+       class="btn btn-info">
+        Comprar
+    </a>
+    }
+</li>

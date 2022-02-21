@@ -1,0 +1,19 @@
+﻿@model PracticaCore2Iniciales.Models.Usuario
+
+@{
+    ViewData["Title"] = "PerfilUsuario";
+}
+
+<h1>Perfil Usuario</h1>
+
+<div>
+    <img src="~/images/@Context.User.FindFirst("IMAGEN").Value" style="border-radius:100%;width:50px;" />
+    <p>UserName: @Context.User.Identity.Name</p>
+    <p> Nombre:  @Context.User.Identity.Name</p>
+    <p> Apellido: @Context.User.FindFirst("APELLIDO").Value</p>
+    <p> Email: @Context.User.FindFirst("EMAIL").Value</p>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

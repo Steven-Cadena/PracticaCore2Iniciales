@@ -1,0 +1,28 @@
+﻿@if (Context.User.Identity.IsAuthenticated == false)
+{
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-controller="Manage"
+           asp-action="Login">
+            Login
+        </a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-controller="Manage"
+           asp-action="LogOut">
+            Log Out
+            <span style="color:blue">
+                @Context.User.Identity.Name
+            </span>
+        </a>
+        <a asp-controller="Manage"
+           asp-action="PerfilUsuario"
+           asp-route-idusuario="@Context.User.FindFirst(ClaimTypes.NameIdentifier).Value)">
+            <img src="~/images/@Context.User.FindFirst("IMAGEN").Value" style="border-radius:100%;width:50px;" />
+        </a>
+    </li>
+}

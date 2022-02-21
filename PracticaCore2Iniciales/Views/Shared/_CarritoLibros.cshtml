@@ -1,0 +1,16 @@
+﻿@{
+    List<int>
+    idslibros = Context.Session.GetObject<List<int>>("IDSLIBROS");
+}
+
+<h4>
+    @if (idslibros == null)
+    {
+        <span>Libros comprados: 0</span>
+    }
+    else
+    {
+        <span> Libros comprados: @idslibros.Count</span>
+    }
+
+</h4>
